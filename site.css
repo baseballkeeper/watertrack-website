@@ -1,0 +1,20 @@
+/* Shared WaterTrack navigation and footer. */
+.wt-site-header,.wt-site-footer{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wt-site-header *,.wt-site-footer *{box-sizing:border-box}
+.wt-site-header{position:relative;z-index:10;background:#fbfefe;border-bottom:1px solid #dceef0;color:#153c4c}
+.wt-site-header .wt-shell,.wt-site-footer .wt-shell{width:min(1120px,calc(100% - 48px));margin-inline:auto}
+.wt-site-header .wt-shell{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.wt-site-header a,.wt-site-footer a{text-decoration:none;color:inherit}
+.wt-site-header a:focus-visible,.wt-site-footer a:focus-visible{outline:3px solid #20b4c9;outline-offset:4px;border-radius:5px}
+.wt-site-header .wt-brand{display:inline-flex;align-items:center;gap:11px;font-size:1.25rem;font-weight:800;letter-spacing:-.05em;white-space:nowrap}
+.wt-site-header .wt-brand-icon{width:39px;height:39px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(145deg,#38c7da,#087d9c);box-shadow:0 6px 16px rgba(4,127,152,.2)}
+.wt-site-header .wt-brand-icon svg{width:22px;height:22px;fill:#fff}
+.wt-site-header .wt-links{display:flex;align-items:center;gap:26px;font-size:.9rem;font-weight:650;color:#456b77}
+.wt-site-header .wt-links a:hover,.wt-site-footer a:hover{color:#087f98}
+.wt-site-header .wt-links a[aria-current="page"]{color:#087f98}
+.wt-site-header .wt-links .wt-support{border:1px solid #b9dfe5;padding:11px 17px;border-radius:999px;color:#126d82;background:#f0fbfc}
+.wt-site-footer{border-top:1px solid #e0edef;background:#f7fcfc;color:#6b8790;font-size:.84rem}
+.wt-site-footer .wt-shell{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:32px 0}
+.wt-site-footer .wt-footer-links{display:flex;flex-wrap:wrap;gap:24px;font-weight:650;color:#557680}
+@media(max-width:750px){.wt-site-header .wt-shell{padding:14px 0;min-height:72px;align-items:flex-start;flex-direction:column;gap:13px}.wt-site-header .wt-links{width:100%;flex-wrap:wrap;gap:12px 20px;font-size:.84rem}.wt-site-header .wt-links .wt-support{padding:6px 12px}.wt-site-footer .wt-shell{align-items:flex-start;flex-direction:column;gap:14px}.wt-site-footer .wt-footer-links{gap:12px 20px}}
+@media(max-width:420px){.wt-site-header .wt-shell,.wt-site-footer .wt-shell{width:calc(100% - 36px)}.wt-site-header .wt-links{gap:10px 14px;font-size:.8rem}}
