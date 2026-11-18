@@ -1,20 +1,346 @@
-/* Shared WaterTrack navigation and footer. */
-.wt-site-header,.wt-site-footer{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.wt-site-header *,.wt-site-footer *{box-sizing:border-box}
-.wt-site-header{position:relative;z-index:10;background:#fbfefe;border-bottom:1px solid #dceef0;color:#153c4c}
-.wt-site-header .wt-shell,.wt-site-footer .wt-shell{width:min(1120px,calc(100% - 48px));margin-inline:auto}
-.wt-site-header .wt-shell{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.wt-site-header a,.wt-site-footer a{text-decoration:none;color:inherit}
-.wt-site-header a:focus-visible,.wt-site-footer a:focus-visible{outline:3px solid #20b4c9;outline-offset:4px;border-radius:5px}
-.wt-site-header .wt-brand{display:inline-flex;align-items:center;gap:11px;font-size:1.25rem;font-weight:800;letter-spacing:-.05em;white-space:nowrap}
-.wt-site-header .wt-brand-icon{width:39px;height:39px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(145deg,#38c7da,#087d9c);box-shadow:0 6px 16px rgba(4,127,152,.2)}
-.wt-site-header .wt-brand-icon svg{width:22px;height:22px;fill:#fff}
-.wt-site-header .wt-links{display:flex;align-items:center;gap:26px;font-size:.9rem;font-weight:650;color:#456b77}
-.wt-site-header .wt-links a:hover,.wt-site-footer a:hover{color:#087f98}
-.wt-site-header .wt-links a[aria-current="page"]{color:#087f98}
-.wt-site-header .wt-links .wt-support{border:1px solid #b9dfe5;padding:11px 17px;border-radius:999px;color:#126d82;background:#f0fbfc}
-.wt-site-footer{border-top:1px solid #e0edef;background:#f7fcfc;color:#6b8790;font-size:.84rem}
-.wt-site-footer .wt-shell{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:32px 0}
-.wt-site-footer .wt-footer-links{display:flex;flex-wrap:wrap;gap:24px;font-weight:650;color:#557680}
-@media(max-width:750px){.wt-site-header .wt-shell{padding:14px 0;min-height:72px;align-items:flex-start;flex-direction:column;gap:13px}.wt-site-header .wt-links{width:100%;flex-wrap:wrap;gap:12px 20px;font-size:.84rem}.wt-site-header .wt-links .wt-support{padding:6px 12px}.wt-site-footer .wt-shell{align-items:flex-start;flex-direction:column;gap:14px}.wt-site-footer .wt-footer-links{gap:12px 20px}}
-@media(max-width:420px){.wt-site-header .wt-shell,.wt-site-footer .wt-shell{width:calc(100% - 36px)}.wt-site-header .wt-links{gap:10px 14px;font-size:.8rem}}
+
+/*
+ * WaterTrack — Shared Website Styles
+ * Navigation, footer, typography, and common page elements.
+ */
+
+:root {
+  --wt-ink: #153c4c;
+  --wt-muted: #557480;
+  --wt-teal: #087f98;
+  --wt-teal-hover: #076c83;
+  --wt-aqua: #20b4c9;
+  --wt-border: #d9eaf0;
+  --wt-header-bg: #fbfefe;
+  --wt-footer-bg: #f7fcfc;
+  --wt-hero-bg: #f1fafb;
+}
+
+/* =========================================
+   GLOBAL
+   ========================================= */
+
+html {
+  scroll-behavior: smooth;
+
+  /*
+   * Reserve space for the vertical scrollbar.
+   * Prevents horizontal shifting between
+   * short and long pages.
+   */
+  scrollbar-gutter: stable;
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.wt-site-header,
+.wt-site-footer,
+.wt-site-header *,
+.wt-site-footer * {
+  box-sizing: border-box;
+}
+
+.wt-site-header,
+.wt-site-footer {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.wt-site-header a,
+.wt-site-footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wt-site-header a:focus-visible,
+.wt-site-footer a:focus-visible {
+  outline: 3px solid var(--wt-aqua);
+  outline-offset: 4px;
+  border-radius: 5px;
+}
+
+/* =========================================
+   SHARED CONTAINER
+   ========================================= */
+
+.wt-site-header .wt-shell,
+.wt-site-footer .wt-shell {
+  width: min(1120px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.wt-site-header {
+  position: relative;
+  z-index: 10;
+  background: var(--wt-header-bg);
+  border-bottom: 1px solid #dceef0;
+  color: var(--wt-ink);
+}
+
+.wt-site-header .wt-shell {
+  min-height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Brand */
+
+.wt-site-header .wt-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.wt-site-header .wt-brand-icon {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+
+  background: linear-gradient(
+    145deg,
+    #38c7da,
+    #087d9c
+  );
+
+  box-shadow: 0 6px 16px rgba(4, 127, 152, 0.2);
+}
+
+.wt-site-header .wt-brand-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+
+/* Navigation */
+
+.wt-site-header .wt-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+
+  font-size: 0.9rem;
+  font-weight: 650;
+  color: #456b77;
+}
+
+.wt-site-header .wt-links a:hover {
+  color: var(--wt-teal);
+}
+
+.wt-site-header .wt-links a[aria-current="page"] {
+  color: var(--wt-teal);
+}
+
+/* Download button */
+
+.wt-site-header .wt-links .wt-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  min-height: 42px;
+  padding: 10px 17px;
+
+  border: 1px solid var(--wt-teal);
+  border-radius: 9px;
+
+  background: var(--wt-teal);
+  color: #fff;
+
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: normal;
+  white-space: nowrap;
+}
+
+.wt-site-header .wt-links .wt-download:hover {
+  background: var(--wt-teal-hover);
+  border-color: var(--wt-teal-hover);
+  color: #fff;
+}
+
+.wt-site-header .wt-links .wt-download:focus-visible {
+  outline: 3px solid var(--wt-aqua);
+  outline-offset: 3px;
+}
+
+/* Legacy support button compatibility */
+
+.wt-site-header .wt-links .wt-support {
+  border: 1px solid #b9dfe5;
+  padding: 11px 17px;
+  border-radius: 9px;
+  color: #126d82;
+  background: #f0fbfc;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.wt-site-footer {
+  border-top: 1px solid #e0edef;
+  background: var(--wt-footer-bg);
+  color: #6b8790;
+  font-size: 0.84rem;
+}
+
+.wt-site-footer .wt-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px 0;
+}
+
+.wt-site-footer .wt-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+
+  font-weight: 650;
+  color: #557680;
+}
+
+.wt-site-footer a:hover {
+  color: var(--wt-teal);
+}
+
+/* =========================================
+   SHARED INTERIOR PAGE HERO
+   ========================================= */
+
+body:has(.hero) .hero {
+  background: var(--wt-hero-bg);
+  padding: 40px 0 35px;
+  border-bottom: 1px solid var(--wt-border);
+}
+
+body:has(.hero) .hero h1 {
+  font-size: clamp(36px, 4vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  margin: 8px 0 12px;
+}
+
+body:has(.hero) .hero p {
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+body:has(.hero) .hero .eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+}
+
+body:has(.hero) .hero .container {
+  width: min(1120px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+/* =========================================
+   SHORT PAGE FOOTER ALIGNMENT
+   ========================================= */
+
+body.wt-guides-index {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.wt-guides-index > main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+body.wt-guides-index > .wt-site-footer {
+  margin-top: auto;
+}
+
+/* =========================================
+   TABLET AND MOBILE
+   ========================================= */
+
+@media (max-width: 750px) {
+  .wt-site-header .wt-shell {
+    min-height: 72px;
+    padding: 14px 0;
+
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .wt-site-header .wt-links {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    font-size: 0.84rem;
+  }
+
+  .wt-site-header .wt-links .wt-support {
+    padding: 6px 12px;
+  }
+
+  .wt-site-footer .wt-shell {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .wt-site-footer .wt-footer-links {
+    gap: 12px 20px;
+  }
+
+  body:has(.hero) .hero {
+    padding: 34px 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .wt-site-header .wt-shell,
+  .wt-site-footer .wt-shell {
+    width: calc(100% - 36px);
+  }
+
+  .wt-site-header .wt-links {
+    gap: 10px 14px;
+    font-size: 0.8rem;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
